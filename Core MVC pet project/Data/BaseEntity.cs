@@ -1,6 +1,6 @@
 ﻿namespace Core_MVC_pet_project.Data
 {
-    public partial class BaseEntity
+    public abstract class BaseEntity
     {
         public int Id { get; set; }
         public DateTime DateCreated { get; set; }
