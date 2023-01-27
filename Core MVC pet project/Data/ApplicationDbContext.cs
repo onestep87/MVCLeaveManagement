@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core_MVC_pet_project.Data
 {
-    public class ILeaveTypeRepository : IdentityDbContext<Employee>
+    public class ApplicationDbContext : IdentityDbContext<Employee>
     {
-        public ILeaveTypeRepository(DbContextOptions<ILeaveTypeRepository> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }

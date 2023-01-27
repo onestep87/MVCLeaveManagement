@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Core_MVC_pet_project.Data.Migrations
 {
-    [DbContext(typeof(ILeaveTypeRepository))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230125163735_ExtendedUserTable")]
     partial class ExtendedUserTable
     {

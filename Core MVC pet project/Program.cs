@@ -10,12 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Core_MVC_pet_project.Data.ILeaveTypeRepository>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<Core_MVC_pet_project.Data.ILeaveTypeRepository>();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<Core_MVC_pet_project.Contracts.ILeaveTypeRepository, LeaveTypeRepository>();

@@ -6,9 +6,9 @@ namespace Core_MVC_pet_project.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly Data.ILeaveTypeRepository context;
+        private readonly ApplicationDbContext context;
 
-        public GenericRepository(Data.ILeaveTypeRepository context)
+        public GenericRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
