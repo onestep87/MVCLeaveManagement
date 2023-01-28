@@ -1,4 +1,5 @@
 ﻿ using Core_MVC_pet_project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -17,7 +18,7 @@ namespace Core_MVC_pet_project.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();

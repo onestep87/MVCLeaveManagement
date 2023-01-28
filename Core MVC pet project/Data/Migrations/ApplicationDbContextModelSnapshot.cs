@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Core_MVC_pet_project.Data.Migrations
+namespace CoreMVCpetproject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -17,10 +17,10 @@ namespace Core_MVC_pet_project.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Core_MVC_pet_project.Data.Employee", b =>
                 {
@@ -100,6 +100,48 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5f55a8f9-5d86-40a2-81ac-5c5b0c8b0c8b",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f507c37d-722e-4695-8137-8fb635a35baf",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateofBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "test@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            LastName = "Administrator",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "TEST@GMAIL.COM",
+                            NormalizedUserName = "TEST@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAELrIHJG/ghpYxNHICrSK6zgqfuL7mp14Jd5tlux+Q9/vcN1IbNj77qJbcOXv3aib8g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "88395d57-4df6-457c-bb18-094ecc8e3602",
+                            TwoFactorEnabled = false,
+                            UserName = "test@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "5f55a8f9-5d86-40a2-81ac-2c8b0c8b0c8b",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "cd16bf26-6ae7-4939-82b4-cee2103d08ef",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateofBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "user@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Ralf",
+                            LastName = "Kurz",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@GMAIL.COM",
+                            NormalizedUserName = "USER@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPwfvXFrhcatNp4dWgwviDMWGx5f3rWJfE5ZHQjVDzCwELQ0yd1gn3hZatwsKe7dWQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f6df8c1e-f7ab-441d-aac3-36909ac02596",
+                            TwoFactorEnabled = false,
+                            UserName = "user@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Core_MVC_pet_project.Data.LeaveAllocation", b =>
@@ -108,7 +150,7 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -139,7 +181,7 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -184,6 +226,20 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5f43a8f9-5d86-40a2-81ac-2c8b0c8b0c8b",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "5f43a5f7-5d55-40a2-12ac-2c8b0c8b0c8b",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -192,7 +248,7 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -217,7 +273,7 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -273,6 +329,18 @@ namespace Core_MVC_pet_project.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "5f55a8f9-5d86-40a2-81ac-5c5b0c8b0c8b",
+                            RoleId = "5f43a8f9-5d86-40a2-81ac-2c8b0c8b0c8b"
+                        },
+                        new
+                        {
+                            UserId = "5f55a8f9-5d86-40a2-81ac-2c8b0c8b0c8b",
+                            RoleId = "5f43a5f7-5d55-40a2-12ac-2c8b0c8b0c8b"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -299,7 +367,7 @@ namespace Core_MVC_pet_project.Data.Migrations
             modelBuilder.Entity("Core_MVC_pet_project.Data.LeaveAllocation", b =>
                 {
                     b.HasOne("Core_MVC_pet_project.Data.LeaveType", "LeaveType")
-                        .WithMany("LeaveAllocations")
+                        .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -356,11 +424,6 @@ namespace Core_MVC_pet_project.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Core_MVC_pet_project.Data.LeaveType", b =>
-                {
-                    b.Navigation("LeaveAllocations");
                 });
 #pragma warning restore 612, 618
         }

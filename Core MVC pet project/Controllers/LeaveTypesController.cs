@@ -4,9 +4,11 @@ using Core_MVC_pet_project.Data;
 using AutoMapper;
 using Core_MVC_pet_project.Models;
 using ILeaveTypeRepository = Core_MVC_pet_project.Contracts.ILeaveTypeRepository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Core_MVC_pet_project.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository leaveTypeRepository;
