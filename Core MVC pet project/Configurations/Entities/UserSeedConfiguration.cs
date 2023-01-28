@@ -27,9 +27,9 @@ namespace Core_MVC_pet_project.Configurations.Entities
             {
                 Id = "5f55a8f9-5d86-40a2-81ac-2c8b0c8b0c8b",
                 Email = "user@gmail.com",
-                NormalizedEmail = "USER@GMAIL.COM",
+                NormalizedEmail = "user@GMAIL.COM",
                 UserName = "user@gmail.com",
-                NormalizedUserName = "USER@GMAIL.COM",
+                NormalizedUserName = "user@GMAIL.COM",
                 FirstName = "Ralf",
                 LastName = "Kurz",
                 PasswordHash = hasher.HashPassword(null, "P@ssword1"),

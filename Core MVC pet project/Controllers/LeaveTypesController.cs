@@ -5,10 +5,11 @@ using AutoMapper;
 using Core_MVC_pet_project.Models;
 using ILeaveTypeRepository = Core_MVC_pet_project.Contracts.ILeaveTypeRepository;
 using Microsoft.AspNetCore.Authorization;
+using Core_MVC_pet_project.Constants;
 
 namespace Core_MVC_pet_project.Controllers
 {
-    [Authorize(Roles ="Administrator")]
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository leaveTypeRepository;
@@ -40,6 +41,7 @@ namespace Core_MVC_pet_project.Controllers
         }
     
 
+        
         // GET: LeaveTypes/Create
         public IActionResult Create()
         {
@@ -62,6 +64,7 @@ namespace Core_MVC_pet_project.Controllers
             return View(leaveTypeVM);
         }
 
+        
         // GET: LeaveTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -124,6 +127,7 @@ namespace Core_MVC_pet_project.Controllers
 
         // POST: LeaveTypes/Delete/5
         [HttpPost, ActionName("Delete")]
+        
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {   
