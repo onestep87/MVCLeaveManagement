@@ -1,6 +1,7 @@
 ﻿using Core_MVC_pet_project.Configurations.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Core_MVC_pet_project.Models;
 
 namespace Core_MVC_pet_project.Data
 {
