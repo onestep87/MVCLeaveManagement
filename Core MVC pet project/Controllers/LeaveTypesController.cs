@@ -6,6 +6,7 @@ using Core_MVC_pet_project.Models;
 using ILeaveTypeRepository = Core_MVC_pet_project.Contracts.ILeaveTypeRepository;
 using Microsoft.AspNetCore.Authorization;
 using Core_MVC_pet_project.Constants;
+using Core_MVC_pet_project.Interfaces;
 
 namespace Core_MVC_pet_project.Controllers
 {
@@ -13,18 +14,20 @@ namespace Core_MVC_pet_project.Controllers
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository leaveTypeRepository;
-        private readonly IMapper imapper;
+        private readonly IMapper mapper;
+        private readonly ILeaveAllocationRepository leaveAllocationRepository;
 
-        public LeaveTypesController(ILeaveTypeRepository leaveTypeRepository, IMapper imapper)
+        public LeaveTypesController(ILeaveTypeRepository leaveTypeRepository, IMapper mapper, ILeaveAllocationRepository leaveAllocationRepository)
         {
             this.leaveTypeRepository = leaveTypeRepository;
-            this.imapper = imapper;
+            this.mapper = mapper;
+            this.leaveAllocationRepository = leaveAllocationRepository;
         }
 
         // GET: LeaveTypes
         public async Task<IActionResult> Index()
         {
-            return View( imapper.Map<List<LeaveTypeVM>>(await leaveTypeRepository.GetAllAsync()));
+            return View( mapper.Map<List<LeaveTypeVM>>(await leaveTypeRepository.GetAllAsync()));
         }
 
         // GET: LeaveTypes/Details/5
@@ -36,7 +39,7 @@ namespace Core_MVC_pet_project.Controllers
             {
                 return NotFound();
             }
-            var leavetypeVM = imapper.Map<LeaveTypeVM>(leaveType);
+            var leavetypeVM = mapper.Map<LeaveTypeVM>(leaveType);
             return View(leavetypeVM);
         }
     
@@ -57,7 +60,7 @@ namespace Core_MVC_pet_project.Controllers
         {
             if (ModelState.IsValid)
             {
-                var leaveType = imapper.Map<LeaveType>(leaveTypeVM);
+                var leaveType = mapper.Map<LeaveType>(leaveTypeVM);
                 await leaveTypeRepository.AddAsync(leaveType);
                 return RedirectToAction(nameof(Index));
             }
@@ -73,7 +76,7 @@ namespace Core_MVC_pet_project.Controllers
             {
                 return NotFound();
             }
-            var leavetypeVM = imapper.Map<LeaveTypeVM>(leaveType);
+            var leavetypeVM = mapper.Map<LeaveTypeVM>(leaveType);
             return View(leavetypeVM);
         }
 
@@ -93,7 +96,7 @@ namespace Core_MVC_pet_project.Controllers
             {
                 try
                 {
-                    var leaveType = imapper.Map<LeaveType>(leaveTypeVM);
+                    var leaveType = mapper.Map<LeaveType>(leaveTypeVM);
                     await leaveTypeRepository.UpdateAsync(leaveType);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -135,6 +138,12 @@ namespace Core_MVC_pet_project.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AllocateLeave(int id)
+        {
+            await leaveAllocationRepository.LeaveAllocation(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

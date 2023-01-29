@@ -5,6 +5,8 @@ using AutoMapper;
 using Core_MVC_pet_project.Configurations;
 using Core_MVC_pet_project.Contracts;
 using Core_MVC_pet_project.Repositories;
+using Core_MVC_pet_project.Controllers;
+using Core_MVC_pet_project.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,8 @@ builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireC
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<Core_MVC_pet_project.Contracts.ILeaveTypeRepository, LeaveTypeRepository>();
+builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+builder.Services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 builder.Services.AddControllersWithViews();
