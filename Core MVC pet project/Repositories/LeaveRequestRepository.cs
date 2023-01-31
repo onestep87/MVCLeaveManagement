@@ -125,7 +125,7 @@ namespace Core_MVC_pet_project.Repositories
         {
             var user = await userManager.GetUserAsync(httpContextAccessor?.HttpContext?.User);
             var allocations = (await leaveAllocationRepository.GetEmployeeAllocations(user.Id)).LeaveAllocations;
-            var requests = await GetAllAsync(user.Id);
+            var requests =  await GetAllAsync(user.Id);
             
 
             var model = new EmployeeLeaveRequestViewVM(allocations, requests);

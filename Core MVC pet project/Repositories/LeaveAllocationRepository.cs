@@ -43,7 +43,7 @@ namespace Core_MVC_pet_project.Repositories
             var allocations = await context.LeaveAllocations
                 .Include(q => q.LeaveType)
                 .Where(q => q.EmployeeId == employeeId)
-                .ProjectTo<EmployeeAllocationVM>(configurationProvider)
+                .ProjectTo<LeaveAllocationVM>(configurationProvider)
                 .ToListAsync();
 
             var employee = await userManager.FindByIdAsync(employeeId);
