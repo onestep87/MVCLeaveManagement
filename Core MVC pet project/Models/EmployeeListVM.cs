@@ -10,6 +10,8 @@ namespace Core_MVC_pet_project.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Date Joined")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime DateJoined { get; set; }
         [Display(Name = "Email Address")]
         public string Email { get; set; }
