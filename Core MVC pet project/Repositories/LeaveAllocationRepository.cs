@@ -16,7 +16,7 @@ namespace Core_MVC_pet_project.Repositories
         private readonly ILeaveTypeRepository leaveTypeRepository;
         private readonly IMapper mapper;
 
-        public LeaveAllocationRepository(ApplicationDbContext context, 
+        public LeaveAllocationRepository(ApplicationDbContext context,
             UserManager<Employee> userManager,
             ILeaveTypeRepository leaveTypeRepository,
             IMapper mapper) : base(context)
@@ -29,16 +29,18 @@ namespace Core_MVC_pet_project.Repositories
 
         public async Task<bool> AllocationExists(string employeeId, int leaveTypeId, int period)
         {
-            return await context.LeaveAllocations.AnyAsync(q => q.EmployeeId == employeeId 
-                                                            && q.LeaveTypeId == leaveTypeId 
-                                                            && q.Period == period);
+            return await context.LeaveAllocations.AnyAsync(q => q.EmployeeId == employeeId
+                                                                && q.LeaveTypeId == leaveTypeId
+                                                                && q.Period == period);
         }
 
         public async Task<EmployeeAllocationVM> GetEmployeeAllocations(string employeeId)
         {
-            var allocations =await context.LeaveAllocations
+            var allocations = await context.LeaveAllocations
                 .Include(q => q.LeaveType)
-                .Where(q => q.EmployeeId == employeeId).ToListAsync();
+                .Where(q => q.EmployeeId == employeeId)
+                .ToListAsync();
+
             var employee = await userManager.FindByIdAsync(employeeId);
 
             var employeeAllocationModel = mapper.Map<EmployeeAllocationVM>(employee);
@@ -46,6 +48,7 @@ namespace Core_MVC_pet_project.Repositories
 
             return employeeAllocationModel;
         }
+
         public async Task<LeaveAllocationEditVM> GetEmployeeAllocation(int id)
         {
             var allocation = await context.LeaveAllocations
@@ -75,19 +78,18 @@ namespace Core_MVC_pet_project.Repositories
             foreach (var employee in employees)
             {
                 if (await AllocationExists(employee.Id, leaveTypeId, period))
-                {
                     continue;
-                }
+
                 allocations.Add(new LeaveAllocation
                 {
                     EmployeeId = employee.Id,
                     LeaveTypeId = leaveTypeId,
-                    NumberOfDays = leaveType.DefaultDays,
-                    Period = period
+                    Period = period,
+                    NumberOfDays = leaveType.DefaultDays
                 });
-                await AddRangeAsync(allocations);
             }
-            
+
+            await AddRangeAsync(allocations);
         }
 
         public async Task<bool> UpdateEmployeeAllocation(LeaveAllocationEditVM model)
@@ -102,6 +104,11 @@ namespace Core_MVC_pet_project.Repositories
             await UpdateAsync(leaveAllocation);
 
             return true;
+        }
+
+        public async Task<LeaveAllocation?> GetEmployeeAllocation(string employeeId, int leaveTypeId)
+        {
+            return await context.LeaveAllocations.FirstOrDefaultAsync(q => q.EmployeeId == employeeId && q.LeaveTypeId == leaveTypeId);
         }
 
     }
