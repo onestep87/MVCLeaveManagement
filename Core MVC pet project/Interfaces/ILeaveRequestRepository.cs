@@ -9,7 +9,7 @@ namespace Core_MVC_pet_project.Interfaces
         Task<bool> CreateLeaveRequest(LeaveRequestCreateVM model);
         Task<EmployeeLeaveRequestViewVM> GetMyLeavesDetails();
         Task<LeaveRequestVM> GetLeaveRequestAsync(int? id);
-        Task<List<LeaveRequest>> GetAllAsync(string employeeId);
+        Task<List<LeaveRequestVM>> GetAllAsync(string employeeId);
         Task<AdminLeaveRequestViewVM> GetAdminLeaveRequestList();
         Task ChangeApprovalStatus(int leaveRequestId, bool approvalstatus);
         Task CancelLeaveRequest(int leaveRequestId);
