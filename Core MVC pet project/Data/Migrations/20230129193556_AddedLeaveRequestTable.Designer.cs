@@ -4,6 +4,7 @@ using Core_MVC_pet_project.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreMVCpetproject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230129193556_AddedLeaveRequestTable")]
+    partial class AddedLeaveRequestTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,7 +109,7 @@ namespace CoreMVCpetproject.Data.Migrations
                         {
                             Id = "5f55a8f9-5d86-40a2-81ac-5c5b0c8b0c8b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "400b8073-9c19-4597-a426-c028c79fb829",
+                            ConcurrencyStamp = "aeaabd02-8d41-4f3d-8d88-cb8188e28c86",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateofBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "test@gmail.com",
@@ -116,9 +119,9 @@ namespace CoreMVCpetproject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@GMAIL.COM",
                             NormalizedUserName = "TEST@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC9jEji3HgQtqOEySoo3GVUnqf+/k6dI5+NoYUbEcAlgYaiogONjl9ArNsrjqHcN9g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPaXOJ9CMyMOKj/jFXRvhdmkbpd0oVbV+WZrJuTgTYTmlb8akqARo4V3LWYPUR0gdQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a4c4e4f5-4f29-4301-ab65-0b34adacd01e",
+                            SecurityStamp = "c2ead7ae-dbf1-4ef5-9cf8-33cac00552ba",
                             TwoFactorEnabled = false,
                             UserName = "test@gmail.com"
                         },
@@ -126,7 +129,7 @@ namespace CoreMVCpetproject.Data.Migrations
                         {
                             Id = "5f55a8f9-5d86-40a2-81ac-2c8b0c8b0c8b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "63c204c2-0117-4c74-a508-df57301d8c6e",
+                            ConcurrencyStamp = "943b0d1d-1f52-4d5c-accd-cdc852cc63ee",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateofBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@gmail.com",
@@ -136,9 +139,9 @@ namespace CoreMVCpetproject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@GMAIL.COM",
                             NormalizedUserName = "user@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB3465gviNouG20A5G8H6eHM6Yj2jTuTzz8HNhoa4LQjd3XZ9Fqjq+lWeADSk28Xow==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKbgyCdR8xzq6Zox91rySFeClhvZwDuxF7BlcLadZcA5mr0mXC1/OYiYP+gmFGZRnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c44d699d-040b-426e-8799-6009c7e21762",
+                            SecurityStamp = "d4c1d56f-20a4-4c1b-85e6-f88915e6819d",
                             TwoFactorEnabled = false,
                             UserName = "user@gmail.com"
                         });
@@ -208,6 +211,7 @@ namespace CoreMVCpetproject.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RequestComments")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestingEmployeeId")
