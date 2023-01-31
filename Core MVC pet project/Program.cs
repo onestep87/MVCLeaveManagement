@@ -1,12 +1,10 @@
-using Core_MVC_pet_project.Data;
+using Core_MVC_pet_project.Configurations;
+using LeaveManagement.Application.Contracts;
+using LeaveManagement.Application.Interfaces;
+using LeaveManagement.Application.Repositories;
+using LeaveManagement.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
-using Core_MVC_pet_project.Configurations;
-using Core_MVC_pet_project.Contracts;
-using Core_MVC_pet_project.Repositories;
-using Core_MVC_pet_project.Controllers;
-using Core_MVC_pet_project.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

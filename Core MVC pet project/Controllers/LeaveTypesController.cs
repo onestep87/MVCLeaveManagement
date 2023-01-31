@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Core_MVC_pet_project.Data;
 using AutoMapper;
-using Core_MVC_pet_project.Models;
-using ILeaveTypeRepository = Core_MVC_pet_project.Contracts.ILeaveTypeRepository;
 using Microsoft.AspNetCore.Authorization;
-using Core_MVC_pet_project.Constants;
-using Core_MVC_pet_project.Interfaces;
+using LeaveManagement.Data;
+using LeaveManagement.Common.Constants;
+using LeaveManagement.Application.Contracts;
+using LeaveManagement.Application.Interfaces;
+using LeaveManagement.Common.Models;
 
 namespace Core_MVC_pet_project.Controllers
 {

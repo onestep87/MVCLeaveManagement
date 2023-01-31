@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Core_MVC_pet_project.Data;
-using Core_MVC_pet_project.Models;
-using AutoMapper;
-using Core_MVC_pet_project.Interfaces;
-using Core_MVC_pet_project.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Core_MVC_pet_project.Constants;
+using LeaveManagement.Data;
+using LeaveManagement.Application.Interfaces;
+using LeaveManagement.Common.Constants;
+using LeaveManagement.Common.Models;
 
 namespace Core_MVC_pet_project.Controllers
 {

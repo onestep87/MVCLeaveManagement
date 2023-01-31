@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Core_MVC_pet_project.Data;
-using Core_MVC_pet_project.Models;
+using LeaveManagement.Common.Models;
+using LeaveManagement.Data;
 
 namespace Core_MVC_pet_project.Configurations
 {

@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Core_MVC_pet_project.Constants;
-using Core_MVC_pet_project.Contracts;
-using Core_MVC_pet_project.Data;
-using Core_MVC_pet_project.Interfaces;
-using Core_MVC_pet_project.Models;
-using Core_MVC_pet_project.Repositories;
-using Microsoft.AspNetCore.Http;
+using LeaveManagement.Application.Contracts;
+using LeaveManagement.Application.Interfaces;
+using LeaveManagement.Common.Constants;
+using LeaveManagement.Common.Models;
+using LeaveManagement.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
